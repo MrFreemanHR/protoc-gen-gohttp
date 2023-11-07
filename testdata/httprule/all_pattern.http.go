@@ -7,11 +7,11 @@ import (
 	bytes "bytes"
 	context "context"
 	base64 "encoding/base64"
+	json "encoding/json"
 	fmt "fmt"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	protojson "google.golang.org/protobuf/encoding/protojson"
 	proto "google.golang.org/protobuf/proto"
 	io "io"
 	ioutil "io/ioutil"
@@ -55,7 +55,7 @@ func (h *AllPatternHTTPConverter) AllPattern(cb func(ctx context.Context, w http
 						return
 					}
 				case "application/json":
-					buf, err := protojson.Marshal(p)
+					buf, err := json.Marshal(p)
 					if err != nil {
 						return
 					}
@@ -99,7 +99,7 @@ func (h *AllPatternHTTPConverter) AllPattern(cb func(ctx context.Context, w http
 					return
 				}
 			case "application/json":
-				if err := protojson.Unmarshal(body, arg); err != nil {
+				if err := json.Unmarshal(body, arg); err != nil {
 					cb(ctx, w, r, nil, nil, err)
 					return
 				}
@@ -159,7 +159,7 @@ func (h *AllPatternHTTPConverter) AllPattern(cb func(ctx context.Context, w http
 				return
 			}
 		case "application/json":
-			buf, err := protojson.Marshal(ret)
+			buf, err := json.Marshal(ret)
 			if err != nil {
 				cb(ctx, w, r, arg, ret, err)
 				return
@@ -200,7 +200,7 @@ func (h *AllPatternHTTPConverter) AllPatternHTTPRule(cb func(ctx context.Context
 						return
 					}
 				case "application/json":
-					buf, err := protojson.Marshal(p)
+					buf, err := json.Marshal(p)
 					if err != nil {
 						return
 					}
@@ -531,7 +531,7 @@ func (h *AllPatternHTTPConverter) AllPatternHTTPRule(cb func(ctx context.Context
 				return
 			}
 		case "application/json":
-			buf, err := protojson.Marshal(ret)
+			buf, err := json.Marshal(ret)
 			if err != nil {
 				cb(ctx, w, r, arg, ret, err)
 				return

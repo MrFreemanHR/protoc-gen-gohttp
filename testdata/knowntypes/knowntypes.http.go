@@ -6,11 +6,11 @@ package knowntypespb
 import (
 	bytes "bytes"
 	context "context"
+	json "encoding/json"
 	fmt "fmt"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	protojson "google.golang.org/protobuf/encoding/protojson"
 	proto "google.golang.org/protobuf/proto"
 	anypb "google.golang.org/protobuf/types/known/anypb"
 	apipb "google.golang.org/protobuf/types/known/apipb"
@@ -71,7 +71,7 @@ func (h *KnownTypesServiceHTTPConverter) Any(cb func(ctx context.Context, w http
 						return
 					}
 				case "application/json":
-					buf, err := protojson.Marshal(p)
+					buf, err := json.Marshal(p)
 					if err != nil {
 						return
 					}
@@ -115,7 +115,7 @@ func (h *KnownTypesServiceHTTPConverter) Any(cb func(ctx context.Context, w http
 					return
 				}
 			case "application/json":
-				if err := protojson.Unmarshal(body, arg); err != nil {
+				if err := json.Unmarshal(body, arg); err != nil {
 					cb(ctx, w, r, nil, nil, err)
 					return
 				}
@@ -175,7 +175,7 @@ func (h *KnownTypesServiceHTTPConverter) Any(cb func(ctx context.Context, w http
 				return
 			}
 		case "application/json":
-			buf, err := protojson.Marshal(ret)
+			buf, err := json.Marshal(ret)
 			if err != nil {
 				cb(ctx, w, r, arg, ret, err)
 				return
@@ -216,7 +216,7 @@ func (h *KnownTypesServiceHTTPConverter) Api(cb func(ctx context.Context, w http
 						return
 					}
 				case "application/json":
-					buf, err := protojson.Marshal(p)
+					buf, err := json.Marshal(p)
 					if err != nil {
 						return
 					}
@@ -260,7 +260,7 @@ func (h *KnownTypesServiceHTTPConverter) Api(cb func(ctx context.Context, w http
 					return
 				}
 			case "application/json":
-				if err := protojson.Unmarshal(body, arg); err != nil {
+				if err := json.Unmarshal(body, arg); err != nil {
 					cb(ctx, w, r, nil, nil, err)
 					return
 				}
@@ -320,7 +320,7 @@ func (h *KnownTypesServiceHTTPConverter) Api(cb func(ctx context.Context, w http
 				return
 			}
 		case "application/json":
-			buf, err := protojson.Marshal(ret)
+			buf, err := json.Marshal(ret)
 			if err != nil {
 				cb(ctx, w, r, arg, ret, err)
 				return
@@ -361,7 +361,7 @@ func (h *KnownTypesServiceHTTPConverter) Duration(cb func(ctx context.Context, w
 						return
 					}
 				case "application/json":
-					buf, err := protojson.Marshal(p)
+					buf, err := json.Marshal(p)
 					if err != nil {
 						return
 					}
@@ -405,7 +405,7 @@ func (h *KnownTypesServiceHTTPConverter) Duration(cb func(ctx context.Context, w
 					return
 				}
 			case "application/json":
-				if err := protojson.Unmarshal(body, arg); err != nil {
+				if err := json.Unmarshal(body, arg); err != nil {
 					cb(ctx, w, r, nil, nil, err)
 					return
 				}
@@ -465,7 +465,7 @@ func (h *KnownTypesServiceHTTPConverter) Duration(cb func(ctx context.Context, w
 				return
 			}
 		case "application/json":
-			buf, err := protojson.Marshal(ret)
+			buf, err := json.Marshal(ret)
 			if err != nil {
 				cb(ctx, w, r, arg, ret, err)
 				return
@@ -506,7 +506,7 @@ func (h *KnownTypesServiceHTTPConverter) Empty(cb func(ctx context.Context, w ht
 						return
 					}
 				case "application/json":
-					buf, err := protojson.Marshal(p)
+					buf, err := json.Marshal(p)
 					if err != nil {
 						return
 					}
@@ -550,7 +550,7 @@ func (h *KnownTypesServiceHTTPConverter) Empty(cb func(ctx context.Context, w ht
 					return
 				}
 			case "application/json":
-				if err := protojson.Unmarshal(body, arg); err != nil {
+				if err := json.Unmarshal(body, arg); err != nil {
 					cb(ctx, w, r, nil, nil, err)
 					return
 				}
@@ -610,7 +610,7 @@ func (h *KnownTypesServiceHTTPConverter) Empty(cb func(ctx context.Context, w ht
 				return
 			}
 		case "application/json":
-			buf, err := protojson.Marshal(ret)
+			buf, err := json.Marshal(ret)
 			if err != nil {
 				cb(ctx, w, r, arg, ret, err)
 				return
@@ -651,7 +651,7 @@ func (h *KnownTypesServiceHTTPConverter) FieldMask(cb func(ctx context.Context, 
 						return
 					}
 				case "application/json":
-					buf, err := protojson.Marshal(p)
+					buf, err := json.Marshal(p)
 					if err != nil {
 						return
 					}
@@ -695,7 +695,7 @@ func (h *KnownTypesServiceHTTPConverter) FieldMask(cb func(ctx context.Context, 
 					return
 				}
 			case "application/json":
-				if err := protojson.Unmarshal(body, arg); err != nil {
+				if err := json.Unmarshal(body, arg); err != nil {
 					cb(ctx, w, r, nil, nil, err)
 					return
 				}
@@ -755,7 +755,7 @@ func (h *KnownTypesServiceHTTPConverter) FieldMask(cb func(ctx context.Context, 
 				return
 			}
 		case "application/json":
-			buf, err := protojson.Marshal(ret)
+			buf, err := json.Marshal(ret)
 			if err != nil {
 				cb(ctx, w, r, arg, ret, err)
 				return
@@ -796,7 +796,7 @@ func (h *KnownTypesServiceHTTPConverter) SourceContext(cb func(ctx context.Conte
 						return
 					}
 				case "application/json":
-					buf, err := protojson.Marshal(p)
+					buf, err := json.Marshal(p)
 					if err != nil {
 						return
 					}
@@ -840,7 +840,7 @@ func (h *KnownTypesServiceHTTPConverter) SourceContext(cb func(ctx context.Conte
 					return
 				}
 			case "application/json":
-				if err := protojson.Unmarshal(body, arg); err != nil {
+				if err := json.Unmarshal(body, arg); err != nil {
 					cb(ctx, w, r, nil, nil, err)
 					return
 				}
@@ -900,7 +900,7 @@ func (h *KnownTypesServiceHTTPConverter) SourceContext(cb func(ctx context.Conte
 				return
 			}
 		case "application/json":
-			buf, err := protojson.Marshal(ret)
+			buf, err := json.Marshal(ret)
 			if err != nil {
 				cb(ctx, w, r, arg, ret, err)
 				return
@@ -941,7 +941,7 @@ func (h *KnownTypesServiceHTTPConverter) Struct(cb func(ctx context.Context, w h
 						return
 					}
 				case "application/json":
-					buf, err := protojson.Marshal(p)
+					buf, err := json.Marshal(p)
 					if err != nil {
 						return
 					}
@@ -985,7 +985,7 @@ func (h *KnownTypesServiceHTTPConverter) Struct(cb func(ctx context.Context, w h
 					return
 				}
 			case "application/json":
-				if err := protojson.Unmarshal(body, arg); err != nil {
+				if err := json.Unmarshal(body, arg); err != nil {
 					cb(ctx, w, r, nil, nil, err)
 					return
 				}
@@ -1045,7 +1045,7 @@ func (h *KnownTypesServiceHTTPConverter) Struct(cb func(ctx context.Context, w h
 				return
 			}
 		case "application/json":
-			buf, err := protojson.Marshal(ret)
+			buf, err := json.Marshal(ret)
 			if err != nil {
 				cb(ctx, w, r, arg, ret, err)
 				return
@@ -1086,7 +1086,7 @@ func (h *KnownTypesServiceHTTPConverter) Timestamp(cb func(ctx context.Context, 
 						return
 					}
 				case "application/json":
-					buf, err := protojson.Marshal(p)
+					buf, err := json.Marshal(p)
 					if err != nil {
 						return
 					}
@@ -1130,7 +1130,7 @@ func (h *KnownTypesServiceHTTPConverter) Timestamp(cb func(ctx context.Context, 
 					return
 				}
 			case "application/json":
-				if err := protojson.Unmarshal(body, arg); err != nil {
+				if err := json.Unmarshal(body, arg); err != nil {
 					cb(ctx, w, r, nil, nil, err)
 					return
 				}
@@ -1190,7 +1190,7 @@ func (h *KnownTypesServiceHTTPConverter) Timestamp(cb func(ctx context.Context, 
 				return
 			}
 		case "application/json":
-			buf, err := protojson.Marshal(ret)
+			buf, err := json.Marshal(ret)
 			if err != nil {
 				cb(ctx, w, r, arg, ret, err)
 				return
@@ -1231,7 +1231,7 @@ func (h *KnownTypesServiceHTTPConverter) Type(cb func(ctx context.Context, w htt
 						return
 					}
 				case "application/json":
-					buf, err := protojson.Marshal(p)
+					buf, err := json.Marshal(p)
 					if err != nil {
 						return
 					}
@@ -1275,7 +1275,7 @@ func (h *KnownTypesServiceHTTPConverter) Type(cb func(ctx context.Context, w htt
 					return
 				}
 			case "application/json":
-				if err := protojson.Unmarshal(body, arg); err != nil {
+				if err := json.Unmarshal(body, arg); err != nil {
 					cb(ctx, w, r, nil, nil, err)
 					return
 				}
@@ -1335,7 +1335,7 @@ func (h *KnownTypesServiceHTTPConverter) Type(cb func(ctx context.Context, w htt
 				return
 			}
 		case "application/json":
-			buf, err := protojson.Marshal(ret)
+			buf, err := json.Marshal(ret)
 			if err != nil {
 				cb(ctx, w, r, arg, ret, err)
 				return
@@ -1376,7 +1376,7 @@ func (h *KnownTypesServiceHTTPConverter) Wrappers(cb func(ctx context.Context, w
 						return
 					}
 				case "application/json":
-					buf, err := protojson.Marshal(p)
+					buf, err := json.Marshal(p)
 					if err != nil {
 						return
 					}
@@ -1420,7 +1420,7 @@ func (h *KnownTypesServiceHTTPConverter) Wrappers(cb func(ctx context.Context, w
 					return
 				}
 			case "application/json":
-				if err := protojson.Unmarshal(body, arg); err != nil {
+				if err := json.Unmarshal(body, arg); err != nil {
 					cb(ctx, w, r, nil, nil, err)
 					return
 				}
@@ -1480,7 +1480,7 @@ func (h *KnownTypesServiceHTTPConverter) Wrappers(cb func(ctx context.Context, w
 				return
 			}
 		case "application/json":
-			buf, err := protojson.Marshal(ret)
+			buf, err := json.Marshal(ret)
 			if err != nil {
 				cb(ctx, w, r, arg, ret, err)
 				return
